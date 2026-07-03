@@ -4,15 +4,15 @@ import './App.css'
 function App() {
   const highlights = [
     {
-      title: 'Expert-led lessons',
+      title: 'Video lessons',
       description: 'Clear, engaging instruction designed to make complex topics feel approachable.',
     },
     {
-      title: 'Flexible learning',
-      description: 'Learn at your own pace with resources built for busy schedules and varied goals.',
+      title: 'Interactive exercises',
+      description: 'Practice what you learn with hands-on activities that reinforce key concepts.',
     },
     {
-      title: 'Community support',
+      title: 'Support',
       description: 'Join a welcoming learning environment focused on curiosity, growth, and confidence.',
     },
   ]
