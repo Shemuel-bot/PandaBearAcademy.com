@@ -37,8 +37,9 @@
 .nav-cta {
   padding: 0.7rem 1rem;
   border-radius: 999px;
-  background: #172554;
+  background: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
   color: white !important;
+  box-shadow: 0 10px 24px rgba(23, 37, 84, 0.16);
 }
 
 .page {
@@ -101,7 +102,7 @@
 }
 
 .btn-primary {
-  background: #172554;
+  background: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
   color: white;
   box-shadow: 0 12px 30px rgba(23, 37, 84, 0.15);
 }
@@ -110,6 +111,11 @@
   border: 1px solid #d1d5db;
   color: #172554;
   background: #ffffff;
+}
+
+.nav-links a:hover,
+.brand:hover {
+  color: #1d4ed8;
 }
 
 .hero-points {
