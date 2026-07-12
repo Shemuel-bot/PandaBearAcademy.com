@@ -15,6 +15,9 @@ export default function SignUp() {
 
         <div className={styles.formPanel}>
           <form className={styles.form}>
+            <button type="button" className={styles.socialBtn}>
+              <img src="" alt="" />
+            </button>
             <label htmlFor="name" className={styles.label}>Full Name</label>
             <input type="text" id="name" name="name" className={styles.input} required />
 
