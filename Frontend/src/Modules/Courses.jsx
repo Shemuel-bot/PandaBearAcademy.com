@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../css/courses.module.css';
+import { Link } from 'react-router-dom';
 
 const enrolledCourses = [
   { title: 'Calculus', description: 'Limits, derivatives, and real-world applications', icon: '∫' },
@@ -101,6 +102,9 @@ export default function Courses() {
                     </article>
                   ))}
                 </div>
+                <Link to="/courses" className={styles.btn}>
+                  see more
+                </Link>
               </div>
             ))}
           </section>
