@@ -203,16 +203,7 @@
   color: #454e5a;
 }
 
-.leagues{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items:center;
-  height: 100px;
-  border: 2px solid #d1d5db;
-  border-radius: 20px;
-  background-color: #ffffff;
-}
+
 
 .courseCard {
   width: 450px;

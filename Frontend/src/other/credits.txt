@@ -1,3 +1,4 @@
 home=https://img.icons8.com/?size=100&id=z6m63h25vYs2&format=png&color=000000
 books=https://img.icons8.com/?size=100&id=3649&format=png&color=000000
 empty_streak=https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000
+magnifying_glass=https://img.icons8.com/?size=100&id=112468&format=png&color=000000

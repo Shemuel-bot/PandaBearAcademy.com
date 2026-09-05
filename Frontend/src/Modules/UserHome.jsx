@@ -31,7 +31,9 @@ export default function UserHome() {
             <section className={styles.section}>
                 <div className={styles.searchBar}>
                     <input type="text" placeholder="What do you want to learn?" />
-                    <button>🔍</button>
+                    <button>
+                        <img src="https://img.icons8.com/?size=100&id=112468&format=png&color=000000" alt="Search" className={styles.headerIcon} />
+                    </button>
                 </div>
                 <div className={styles.streak}>
                     <div className={styles.streakBadge}>
@@ -61,10 +63,7 @@ export default function UserHome() {
                         </p>
                     </div>
                 </div>
-                <div className={styles.leagues}>
-                    <h3>🔒</h3>
-                    <h3>Unlock leagues</h3>
-                </div>
+                
             </section>
             <section className={styles.section}>
                 <div className={styles.courseList}>
