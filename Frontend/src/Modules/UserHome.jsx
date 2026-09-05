@@ -35,15 +35,30 @@ export default function UserHome() {
                 </div>
                 <div className={styles.streak}>
                     <div className={styles.streakBadge}>
-                        <h1>0 🔥</h1>
+                        <h1>
+                            0
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </h1>
                         <p>Do 1 lesson to start a streak!!</p>
                     </div>
                     
                     <div className={styles.streakDays}>
-                        <p>S🔥</p>
-                        <p>M🔥</p>
-                        <p>T🔥</p>
-                        <p>W🔥</p>
+                        <p >
+                            S
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
+                        <p >
+                            M
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
+                        <p >
+                            T
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
+                        <p >
+                            W
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
                     </div>
                 </div>
                 <div className={styles.leagues}>
