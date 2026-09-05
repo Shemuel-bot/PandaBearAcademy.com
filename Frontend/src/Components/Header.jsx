@@ -27,9 +27,6 @@ export default function Header() {
                 </div>
             </div>
             <div className={styles.headerActions}>
-                <div className={styles.starbits}>
-                    <span>★</span> 5
-                </div>
                 <button className={styles.donateBtn}>Donate</button>
             </div>
         </header>

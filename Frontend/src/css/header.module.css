@@ -103,22 +103,6 @@
   margin-right: 50px;
 }
 
-.starbits {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.6rem 0.85rem;
-  border-radius: 999px;
-  background: #f9fafb;
-  border: 1px solid #d1d5db;
-  font-weight: 700;
-  color: #111827;
-}
-
-.starbits span {
-  color: #f59e0b;
-}
-
 .donateBtn {
   border: 1px solid #d1d5db;
   background: #ffffff;
