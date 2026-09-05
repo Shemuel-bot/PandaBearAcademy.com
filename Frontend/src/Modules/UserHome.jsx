@@ -16,8 +16,14 @@ export default function UserHome() {
                 </div>
             </div>
             <div className={styles.headerlinks}>
-                <Link to="/home" className={styles.home} ><p>🏠</p> Home</Link>
-                <Link to="/courses" className={styles.headerlink}><p>📚</p> Courses</Link>
+                <Link to="/home" className={styles.home} >
+                    <img src="https://img.icons8.com/?size=100&id=z6m63h25vYs2&format=png&color=000000" alt="Home" className={styles.headerIcon} />
+                    Home
+                </Link>
+                <Link to="/courses" className={styles.headerlink}>
+                    <img src="https://img.icons8.com/?size=100&id=3649&format=png&color=000000" alt="Courses" className={styles.headerIcon} />
+                    Courses
+                </Link>
             </div>
             
         </header>
