@@ -1,0 +1,141 @@
+
+.shell {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  border-bottom: 1px solid #d1d5db;
+}
+
+.headerlinks {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  gap: 35px
+}
+
+.headerlink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-decoration: none;
+  color: #babcbe;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.courseLink{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 2px solid #3e3e3f;
+  color: #3e3e3f;
+}
+
+.headerlink:hover {
+    border-bottom: 2px solid #d1d5db;
+    color: #3e3e3f;
+    cursor: pointer;
+}
+
+.brandStuff{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  margin-left: 2rem;
+}
+.brandBlock:hover{
+  cursor: pointer;
+}
+
+.brandLogo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #4b5563;
+  font-weight: 700;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #172554;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 50px;
+}
+
+.starbits {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  font-weight: 700;
+  color: #111827;
+}
+
+.starbits span {
+  color: #f59e0b;
+}
+
+.donateBtn {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #172554;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.donateBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.headerIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

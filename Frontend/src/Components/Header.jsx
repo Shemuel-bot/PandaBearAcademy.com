@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
+import styles from '../css/header.module.css';
 
-export default function Header({ styles }) {
+export default function Header() {
     const navigate = useNavigate();
     return (
         <header className={styles.header}>
@@ -15,7 +16,10 @@ export default function Header({ styles }) {
                 </div>
                 </div>
                 <div className={styles.headerlinks}>
-                <Link to="/home" className={styles.headerlink} ><p>🏠</p> Home</Link>
+                <Link to="/home" className={styles.headerlink} >
+                    <img src="https://img.icons8.com/?size=100&id=z6m63h25vYs2&format=png&color=000000" alt="Home"  className={styles.headerIcon}/>
+                    Home
+                </Link>
                 <Link to="/courses" className={styles.courseLink}><p>📚</p> Courses</Link>
                 </div>
             </div>
@@ -23,7 +27,7 @@ export default function Header({ styles }) {
                 <div className={styles.starbits}>
                     <span>★</span> 5
                 </div>
-                <button className={styles.optionsBtn}>Donate</button>
+                <button className={styles.donateBtn}>Donate</button>
             </div>
         </header>
     );
