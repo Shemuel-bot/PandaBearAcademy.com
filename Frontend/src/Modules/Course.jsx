@@ -9,7 +9,7 @@ export default function Course() {
     return(
         <div className={styles.page}>
             <div className={styles.shell}>
-                <Header styles={styles} />
+                <Header />
                 <main className={styles.content}>
                     <section className={styles.descriptionSection}>
                         <div className={styles.description}>

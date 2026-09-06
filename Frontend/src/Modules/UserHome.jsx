@@ -16,8 +16,14 @@ export default function UserHome() {
                 </div>
             </div>
             <div className={styles.headerlinks}>
-                <Link to="/home" className={styles.home} ><p>🏠</p> Home</Link>
-                <Link to="/courses" className={styles.headerlink}><p>📚</p> Courses</Link>
+                <Link to="/home" className={styles.home} >
+                    <img src="https://img.icons8.com/?size=100&id=z6m63h25vYs2&format=png&color=000000" alt="Home" className={styles.headerIcon} />
+                    Home
+                </Link>
+                <Link to="/courses" className={styles.headerlink}>
+                    <img src="https://img.icons8.com/?size=100&id=3649&format=png&color=000000" alt="Courses" className={styles.headerIcon} />
+                    Courses
+                </Link>
             </div>
             
         </header>
@@ -25,25 +31,39 @@ export default function UserHome() {
             <section className={styles.section}>
                 <div className={styles.searchBar}>
                     <input type="text" placeholder="What do you want to learn?" />
-                    <button>🔍</button>
+                    <button>
+                        <img src="https://img.icons8.com/?size=100&id=112468&format=png&color=000000" alt="Search" className={styles.headerIcon} />
+                    </button>
                 </div>
                 <div className={styles.streak}>
                     <div className={styles.streakBadge}>
-                        <h1>0 🔥</h1>
+                        <h1>
+                            0
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </h1>
                         <p>Do 1 lesson to start a streak!!</p>
                     </div>
                     
                     <div className={styles.streakDays}>
-                        <p>S🔥</p>
-                        <p>M🔥</p>
-                        <p>T🔥</p>
-                        <p>W🔥</p>
+                        <p >
+                            S
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
+                        <p >
+                            M
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
+                        <p >
+                            T
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
+                        <p >
+                            W
+                            <img src="https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000" alt="Streak" className={styles.headerIcon} />
+                        </p>
                     </div>
                 </div>
-                <div className={styles.leagues}>
-                    <h3>🔒</h3>
-                    <h3>Unlock leagues</h3>
-                </div>
+                
             </section>
             <section className={styles.section}>
                 <div className={styles.courseList}>
