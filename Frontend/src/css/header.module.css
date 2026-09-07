@@ -120,6 +120,8 @@
 .donateBtn:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #2563eb;
+  color: #2563eb;
 }
 
 .headerIcon {
