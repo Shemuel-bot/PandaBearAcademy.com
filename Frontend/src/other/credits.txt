@@ -3,3 +3,4 @@ books=https://img.icons8.com/?size=100&id=3649&format=png&color=000000
 empty_streak=https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=000000
 magnifying_glass=https://img.icons8.com/?size=100&id=112468&format=png&color=000000
 donate=https://img.icons8.com/?size=100&id=5469&format=png&color=000000
+star=https://img.icons8.com/?size=100&id=60003&format=png&color=FFFFFF
