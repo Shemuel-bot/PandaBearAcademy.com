@@ -27,7 +27,10 @@ export default function Header() {
                 </div>
             </div>
             <div className={styles.headerActions}>
-                <button className={styles.donateBtn}>Donate</button>
+                <button className={styles.donateBtn}>
+                    <img src="https://img.icons8.com/?size=100&id=5469&format=png&color=000000" alt="Donate" className={styles.headerIcon} />
+                    Donate
+                </button>
             </div>
         </header>
     );

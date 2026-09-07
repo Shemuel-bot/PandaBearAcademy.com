@@ -47,7 +47,7 @@
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  border-bottom: 2px solid #3e3e3f;
+  border-bottom: 2px solid #1d4ed8;
   color: #3e3e3f;
 }
 
@@ -104,6 +104,9 @@
 }
 
 .donateBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   border: 1px solid #d1d5db;
   background: #ffffff;
   color: #172554;
@@ -117,6 +120,8 @@
 .donateBtn:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: #2563eb;
+  color: #2563eb;
 }
 
 .headerIcon {

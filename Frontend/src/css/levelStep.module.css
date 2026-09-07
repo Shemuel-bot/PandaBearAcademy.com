@@ -1,3 +1,11 @@
+.levelStepContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
 .levelStep{
     display: flex;
     flex-direction: column;
@@ -20,4 +28,17 @@
     border-radius: 50%;
     width: 70px;
     height: 60px;
+}
+
+.starIcon {
+    width: 40px;
+    height: 40px;
+}
+
+.levelLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
 }
