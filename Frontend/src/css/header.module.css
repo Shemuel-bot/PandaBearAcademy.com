@@ -125,7 +125,7 @@
   color: #2563eb;
 }
 
-.donateBtn {
+.donateLink {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -136,10 +136,11 @@
   border-radius: 999px;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.donateBtn:hover {
+.donateLink:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
   border-color: #2563eb;

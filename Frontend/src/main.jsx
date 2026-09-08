@@ -10,6 +10,7 @@ import Course from './Modules/Course.jsx'
 import UserHome from './Modules/UserHome.jsx'
 import Root from './Modules/Root.jsx'
 import Profile from './Modules/Profile.jsx'
+import Donate from './Modules/Donate.jsx'
 
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "profile",
     element: <Profile />,
+  },
+  {
+    path: "donate",
+    element: <Donate />,
   }
 ]);
 
