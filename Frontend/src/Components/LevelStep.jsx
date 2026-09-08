@@ -1,13 +1,16 @@
-import React from 'react';
+import {React, useState} from 'react';
 import styles from '../css/levelStep.module.css';
+import StartLessonDiv from './StartLessonDiv';
 
 export default function LevelStep({ level, isActive, isCompleted, onClick }) {
+  const [active, setActive] = useState(isActive);
   const handleClick = () => {
-    if (isActive || isCompleted) {
-      onClick(level);
+    if (active) {
+      setActive(false);
+    }else {
+      setActive(true);
     }
-  };
-
+  }
   return (
     <div className={styles.levelStepContainer}>
       <div className={styles.shadow}>
@@ -19,12 +22,11 @@ export default function LevelStep({ level, isActive, isCompleted, onClick }) {
         </div>
         
       </div>
-      <div className={styles.levelLabel}>
-        <h3 className={styles.levelText}>Level {level}</h3>
-        <button className={styles.levelButton} onClick={handleClick} disabled={!isActive && !isCompleted}>
-          Start Lesson
-        </button>
-      </div>
+      {
+        active && (
+          <StartLessonDiv level={level} isActive={isActive} isCompleted={isCompleted} onClick={onClick} />
+        )
+      }
     </div>
   );
 }
