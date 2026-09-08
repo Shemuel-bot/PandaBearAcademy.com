@@ -155,6 +155,7 @@
 .descriptionSection {
   flex: 1;
   max-width: fit-content;
+  height: fit-content;
   background: #ffffff;
   border-radius: 0.5rem;
   padding: 1.25rem;
