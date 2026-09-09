@@ -20,7 +20,8 @@ export default function Course() {
                     <section className={styles.lessonsSection}>
                         
                         <div className={styles.stairCase}>
-                            <Unit unitNumber={1} isActive={true} isCompleted={false} onClick={(unitNumber) => console.log(`Unit ${unitNumber} clicked`)} />
+                            <Unit unitNumber={1} isActive={false} isCompleted={false} onClick={(unitNumber) => console.log(`Unit ${unitNumber} clicked`)} />
+                        
                         </div>
                     </section>
                 </main>
