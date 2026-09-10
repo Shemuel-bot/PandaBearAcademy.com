@@ -24,7 +24,6 @@ export default function Profile() {
     { label: 'Courses Enrolled', value: '8', icon: '📚' },
     { label: 'Lessons Completed', value: '42', icon: '✓' },
     { label: 'Current Streak', value: '7', icon: '🔥' },
-    { label: 'Total Points', value: '1,250', icon: '⭐' }
   ];
 
   const handleEditClick = () => {
@@ -160,19 +159,7 @@ export default function Profile() {
                 <button className={styles.settingButton}>Manage</button>
               </div>
 
-              <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>🎨</div>
-                <h3>Preferences</h3>
-                <p>Customize your learning experience.</p>
-                <button className={styles.settingButton}>Adjust</button>
-              </div>
-
-              <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>📥</div>
-                <h3>Download Data</h3>
-                <p>Export your profile and learning data.</p>
-                <button className={styles.settingButton}>Download</button>
-              </div>
+            
             </div>
           </section>
 
