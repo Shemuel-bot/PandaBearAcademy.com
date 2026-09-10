@@ -4,3 +4,5 @@ empty_streak=https://img.icons8.com/?size=100&id=zFMhE88YdSqt&format=png&color=0
 magnifying_glass=https://img.icons8.com/?size=100&id=112468&format=png&color=000000
 donate=https://img.icons8.com/?size=100&id=5469&format=png&color=000000
 star=https://img.icons8.com/?size=100&id=60003&format=png&color=FFFFFF
+bell=https://img.icons8.com/?size=100&id=37084&format=png&color=000000
+lock=https://img.icons8.com/?size=100&id=94&format=png&color=000000

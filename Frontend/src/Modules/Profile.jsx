@@ -146,14 +146,14 @@ export default function Profile() {
             </div>
             <div className={styles.settingsGrid}>
               <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>🔐</div>
+                <img src="https://img.icons8.com/?size=100&id=94&format=png&color=000000" alt="Change Password" className={styles.settingIcon} />
                 <h3>Change Password</h3>
                 <p>Update your password to keep your account secure.</p>
                 <button className={styles.settingButton}>Update</button>
               </div>
 
               <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>🔔</div>
+                <img src="https://img.icons8.com/?size=100&id=37084&format=png&color=000000" alt="Notifications" className={styles.settingIcon} />
                 <h3>Notifications</h3>
                 <p>Manage your notification preferences.</p>
                 <button className={styles.settingButton}>Manage</button>
