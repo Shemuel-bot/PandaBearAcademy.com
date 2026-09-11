@@ -21,10 +21,9 @@ export default function Profile() {
 
   // Placeholder stats
   const stats = [
-    { label: 'Courses Enrolled', value: '8', icon: '📚' },
-    { label: 'Lessons Completed', value: '42', icon: '✓' },
-    { label: 'Current Streak', value: '7', icon: '🔥' },
-    { label: 'Total Points', value: '1,250', icon: '⭐' }
+    { label: 'Courses Enrolled', value: '8', icon: 'https://img.icons8.com/?size=100&id=37814&format=png&color=000000' },
+    { label: 'Lessons Completed', value: '42', icon: 'https://img.icons8.com/?size=100&id=VeUo27LTyt8A&format=png&color=000000' },
+    { label: 'Current Streak', value: '7', icon: 'https://img.icons8.com/?size=100&id=18515&format=png&color=000000' },
   ];
 
   const handleEditClick = () => {
@@ -129,7 +128,7 @@ export default function Profile() {
             <div className={styles.statsGrid}>
               {stats.map((stat) => (
                 <div key={stat.label} className={styles.statCard}>
-                  <div className={styles.statIcon}>{stat.icon}</div>
+                  <img src={stat.icon} alt={stat.label} className={styles.settingIcon} />
                   <div className={styles.statContent}>
                     <p className={styles.statValue}>{stat.value}</p>
                     <p className={styles.statLabel}>{stat.label}</p>
@@ -147,64 +146,23 @@ export default function Profile() {
             </div>
             <div className={styles.settingsGrid}>
               <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>🔐</div>
+                <img src="https://img.icons8.com/?size=100&id=94&format=png&color=000000" alt="Change Password" className={styles.settingIcon} />
                 <h3>Change Password</h3>
                 <p>Update your password to keep your account secure.</p>
                 <button className={styles.settingButton}>Update</button>
               </div>
 
               <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>🔔</div>
+                <img src="https://img.icons8.com/?size=100&id=37084&format=png&color=000000" alt="Notifications" className={styles.settingIcon} />
                 <h3>Notifications</h3>
                 <p>Manage your notification preferences.</p>
                 <button className={styles.settingButton}>Manage</button>
               </div>
 
-              <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>🎨</div>
-                <h3>Preferences</h3>
-                <p>Customize your learning experience.</p>
-                <button className={styles.settingButton}>Adjust</button>
-              </div>
-
-              <div className={styles.settingCard}>
-                <div className={styles.settingIcon}>📥</div>
-                <h3>Download Data</h3>
-                <p>Export your profile and learning data.</p>
-                <button className={styles.settingButton}>Download</button>
-              </div>
+            
             </div>
           </section>
 
-          {/* Achievements Section */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2>Achievements</h2>
-              <p>Badges and milestones you've earned.</p>
-            </div>
-            <div className={styles.achievementsGrid}>
-              <div className={styles.badge}>
-                <div className={styles.badgeIcon}>🏆</div>
-                <p className={styles.badgeTitle}>First Steps</p>
-                <p className={styles.badgeDesc}>Completed your first lesson</p>
-              </div>
-              <div className={styles.badge}>
-                <div className={styles.badgeIcon}>⚡</div>
-                <p className={styles.badgeTitle}>Week Warrior</p>
-                <p className={styles.badgeDesc}>7-day learning streak</p>
-              </div>
-              <div className={styles.badge}>
-                <div className={styles.badgeIcon}>🚀</div>
-                <p className={styles.badgeTitle}>Course Master</p>
-                <p className={styles.badgeDesc}>Completed a full course</p>
-              </div>
-              <div className={styles.badge}>
-                <div className={styles.badgeIcon}>💯</div>
-                <p className={styles.badgeTitle}>Perfect Score</p>
-                <p className={styles.badgeDesc}>100% on a lesson</p>
-              </div>
-            </div>
-          </section>
         </main>
       </div>
     </div>
