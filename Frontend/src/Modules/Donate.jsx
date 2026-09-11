@@ -46,19 +46,6 @@ export default function Donate() {
       ],
       impact: 'Supports an entire course module'
     },
-    {
-      id: 4,
-      amount: 100,
-      title: 'Partner',
-      description: 'Partner with us to transform education',
-      perks: [
-        'All Champion benefits',
-        'Personal thank you letter',
-        'Featured in our hall of fame'
-      ],
-      impact: 'Fully funds one student\'s learning journey',
-      premium: true
-    }
   ];
 
   const impactStats = [
@@ -128,23 +115,7 @@ export default function Donate() {
             </div>
           </section>
 
-          {/* Impact Stats */}
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2>Our Impact</h2>
-              <p>See how we're transforming education worldwide</p>
-            </div>
-            <div className={styles.statsGrid}>
-              {impactStats.map((stat) => (
-                <div key={stat.label} className={styles.impactCard}>
-                  <div className={styles.impactIcon}>{stat.icon}</div>
-                  <h3 className={styles.impactLabel}>{stat.label}</h3>
-                  <p className={styles.impactDescription}>{stat.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
+          
           {/* Donation Tiers */}
           <section className={styles.section}>
             <div className={styles.sectionHeader}>
