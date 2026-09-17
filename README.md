@@ -1,88 +1,103 @@
 # Panda Bear Academy
 
-A modern frontend landing page for an education brand built with React and Vite.
-
-## Overview
-
-This repository contains the static frontend application for Panda Bear Academy. It showcases a responsive landing page with course highlights, user navigation, and a polished brand presentation.
-
-## What this project includes
-
-- React 19 single-page application
-- Vite 8 development and build tooling
-- Client-side navigation with React Router DOM
-- ESLint code quality checks
-- Responsive layout optimized for desktop and mobile
-
-## Key features
-
-- Hero section with calls to action
-- Course and program highlight cards
-- Sign-in / sign-up pages
-- User home/dashboard placeholder
-- Modular CSS and component organization
+Panda Bear Academy is a full-stack learning platform in progress. The repository contains a React/Vite frontend and an Express/Prisma backend for users, courses, and lessons.
 
 ## Tech stack
 
-- React 19
-- Vite 8
-- React Router DOM 7
-- ESLint 10
-- React Player
+- **Frontend:** React 19, Vite 8, React Router DOM 7, React Player
+- **Backend:** Node.js, Express 5, Prisma ORM 8, PostgreSQL 15+
+- **Code quality:** ESLint 10
+
+## Requirements
+
+- Node.js 20 or newer
+- npm
+- PostgreSQL 15 or newer for the backend
 
 ## Getting started
 
-### Requirements
-
-- Node.js 20+ (recommended)
-- npm
-
-### Install dependencies
+Install dependencies for each application in separate terminals:
 
 ```bash
 cd Frontend
 npm install
 ```
 
-### Run locally
+```bash
+cd Backend
+npm install
+```
+
+### Configure the backend
+
+Create `Backend/.env` with a PostgreSQL connection string:
+
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/pandabearacademy"
+```
+
+The database must be running before starting the backend.
+
+### Start the applications
+
+Start the frontend from `Frontend/`:
 
 ```bash
 npm run dev
 ```
 
-Open the local URL shown in the terminal to view the app.
-
-### Build for production
+Start the backend from `Backend/`:
 
 ```bash
-npm run build
+npm run dev
 ```
 
-### Preview production build
+The frontend URL is printed by Vite. The backend listens on `http://localhost:3000`.
+
+## Backend commands
+
+Run these commands from `Backend/`:
 
 ```bash
-npm run preview
+npm run contract:emit
 ```
 
-### Lint the code
+Regenerates `src/prisma/contract.json` and `src/prisma/contract.d.ts` after changing `src/prisma/contract.prisma`.
+
+## API endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/users` | Lists users with their IDs, email addresses, and names |
+| `POST` | `/users` | Creates a user from the JSON request body |
+
+## Frontend commands
+
+Run these commands from `Frontend/`:
 
 ```bash
-npm run lint
+npm run build    # Create a production build
+npm run preview  # Preview the production build locally
+npm run lint     # Run ESLint
 ```
 
 ## Project structure
 
-- `Frontend/` – frontend application source and configuration
-- `Frontend/src/` – React components, styles, and assets
-- `Frontend/src/Modules/` – page components for courses, auth, and user home
-- `Frontend/public/` – static public assets
-- `Frontend/package.json` – frontend dependencies and npm scripts
+```text
+Backend/
+	index.js                 Express server and API routes
+	prisma.config.ts         Prisma configuration
+	src/prisma/              Database client and data contract
+Frontend/
+	src/                     React components, modules, styles, and assets
+	public/                  Static public assets
+```
 
-## Notes
+## Data model
 
-The repo currently holds the frontend landing page only. The codebase is structured for easy extension into a full learning platform.
+The Prisma contract currently defines `User`, `Course`, and `Lesson` models. The contract is stored in `Backend/src/prisma/contract.prisma`; its generated companion files should be committed and updated with `npm run contract:emit`.
 
 ## License
 
-MIT
+ISC
 
