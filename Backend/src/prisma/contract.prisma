@@ -6,16 +6,24 @@ model User {
   username  String?
   name      String?
   posts     Post[]
+  streak    Int
+  courses   Course[]
   createdAt TimestamptzString @default(now())
   updatedAt temporal.updatedAtString()
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String?
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt TimestamptzString @default(now())
-  updatedAt temporal.updatedAtString()
+model Course {
+  id                Int   @id @default(autoincrement())
+  title             String
+  users             User[]
+  shortDescription  String
+  longDescription   String
+  lessons           Lesson[]
+}
+
+model Lesson {
+  id          Int       @id @default(autoincrement())
+  title       String    
+  course      Course    @relation(fields: [lessonId], references: [id])
+  lessonId    Int
 }
