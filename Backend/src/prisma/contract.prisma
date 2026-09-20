@@ -26,4 +26,16 @@ model Lesson {
   title       String    
   course      Course    @relation(fields: [lessonId], references: [id])
   lessonId    Int
+  videoLink   String
+  lessonDesx  String
+  problems    Problems?
+}
+
+model Problems {
+  id            Int     @id @default(autoincrement())
+  questions     String[]
+  answers       String[]
+  problemId     Int
+  lesson        Lesson  @relation(fields: [problemId], relation[id])
+
 }
