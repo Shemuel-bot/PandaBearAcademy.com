@@ -5,11 +5,11 @@ model User {
   email     String   @unique
   username  String?
   name      String?
-  posts     Post[]
-  streak    Int
+  password  String
+  streak    Int      @default(0)
   courses   Course[]
-  createdAt TimestamptzString @default(now())
-  updatedAt temporal.updatedAtString()
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Course {
@@ -24,10 +24,10 @@ model Course {
 model Lesson {
   id          Int       @id @default(autoincrement())
   title       String    
-  course      Course    @relation(fields: [lessonId], references: [id])
-  lessonId    Int
+  course      Course    @relation(fields: [courseId], references: [id])
+  courseId    Int
   videoLink   String
-  lessonDesx  String
+  description String
   problems    Problems?
 }
 
@@ -35,7 +35,6 @@ model Problems {
   id            Int     @id @default(autoincrement())
   questions     String[]
   answers       String[]
-  problemId     Int
-  lesson        Lesson  @relation(fields: [problemId], relation[id])
-
+  problemId     Int     @unique
+  lesson        Lesson  @relation(fields: [problemId], references: [id])
 }

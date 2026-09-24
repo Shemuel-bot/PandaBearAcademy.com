@@ -1,13 +1,15 @@
 import express from "express";
 const router = express.Router();
-const UserController = require("../controllers/User.js");
+import UserController from './controllers/User.js'
 
 const app = express();
 app.use(express.json());
 
-app.use("/users", router);
+app.use("/", router);
 
-router.get("/", UserController.getAllUsers);
+router.get("/users/v1", UserController.getAllUsers);
+
+router.post("/users/v1/post", UserController.userPost)
 
 
 
