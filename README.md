@@ -59,7 +59,7 @@ The frontend URL is printed by Vite. The backend listens on `http://localhost:30
 Run these commands from `Backend/`:
 
 ```bash
-npm run contract:emit
+npx run contract emit
 ```
 
 Regenerates `src/prisma/contract.json` and `src/prisma/contract.d.ts` after changing `src/prisma/contract.prisma`.
