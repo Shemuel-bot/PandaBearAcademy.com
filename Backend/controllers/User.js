@@ -2,6 +2,8 @@ import { db } from "../src/prisma/db.ts";
 import { asyncHandler } from "express-async-handler";
 import { body, validationResult } from "express-validator";
 import { bcrypt } from "bcryptjs";
+import { JsonWebTokenError, jwt } from "jsonwebtoken";
+
 
 export const getAllUsers = asyncHandler(async (req, res) => {
     const users = await db.orm.public.User.select("id", "email", "name").all();
@@ -35,3 +37,42 @@ export const userPost = [
     })
 
 ]
+
+export const logIn = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    if(typeof email !== 'string' || typeof password !== 'string'){
+        return res.status(401).json({ message: false})
+    }
+
+    const user = await db.orm.public.User.where("email")
+    .select({ email })
+    .include("enrollment")
+    .first();
+
+    if (!user || !(await bcrypt.compare(password, user.password))){
+        return res.status(401).json({message: false});
+    }
+
+    const token = jwt.sign(
+        {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+            name: user.name,
+            courses: user.enrollment,
+            joined: user.createdAt,
+            lastUpdated: user.updatedAt
+        },
+        process.env.JWT_SECRET,
+        {expiresIn: "1d"}
+
+    )
+
+    res.json({
+        message: true,
+        token,
+        user: user
+    })
+
+})

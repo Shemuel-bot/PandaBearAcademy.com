@@ -8,8 +8,10 @@ app.use(express.json());
 app.use("/", router);
 
 router.get("/users/v1", UserController.getAllUsers);
+router.post("/users/v1", UserController.userPost);
+router.post("/users/v1/login", UserController.logIn)
 
-router.post("/users/v1/post", UserController.userPost)
+
 
 
 
