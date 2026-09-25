@@ -4,8 +4,20 @@
   "target": "postgres",
   "profileHash": "3916f444a8a17ad749191acf9e08dad97d1a327b88c2f1d45d12f240296aa8b2",
   "roots": {
-    "post": {
-      "model": "Post",
+    "course": {
+      "model": "Course",
+      "namespace": "public"
+    },
+    "enrollment": {
+      "model": "Enrollment",
+      "namespace": "public"
+    },
+    "lesson": {
+      "model": "Lesson",
+      "namespace": "public"
+    },
+    "problems": {
+      "model": "Problems",
       "namespace": "public"
     },
     "user": {
@@ -17,26 +29,205 @@
     "namespaces": {
       "public": {
         "models": {
-          "Post": {
+          "Course": {
             "fields": {
-              "authorId": {
+              "id": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/int4@1",
                   "kind": "scalar"
                 }
               },
-              "content": {
-                "nullable": true,
+              "longDescription": {
+                "nullable": false,
                 "type": {
                   "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               },
-              "createdAt": {
+              "shortDescription": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "title": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "enrollment": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "courseId"
+                  ]
+                },
+                "to": {
+                  "model": "Enrollment",
+                  "namespace": "public"
+                }
+              },
+              "lessons": {
+                "cardinality": "1:N",
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "courseId"
+                  ]
+                },
+                "to": {
+                  "model": "Lesson",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "id": {
+                  "column": "id"
+                },
+                "longDescription": {
+                  "column": "longDescription"
+                },
+                "shortDescription": {
+                  "column": "shortDescription"
+                },
+                "title": {
+                  "column": "title"
+                }
+              },
+              "namespaceId": "public",
+              "table": "course"
+            }
+          },
+          "Enrollment": {
+            "fields": {
+              "completed": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/bool@1",
+                  "kind": "scalar"
+                }
+              },
+              "courseId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "enrolledAt": {
                 "nullable": false,
                 "type": {
                   "codecId": "pg/timestamptz-string@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "progress": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "userId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "course": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "courseId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Course",
+                  "namespace": "public"
+                }
+              },
+              "user": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "userId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "User",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "completed": {
+                  "column": "completed"
+                },
+                "courseId": {
+                  "column": "courseId"
+                },
+                "enrolledAt": {
+                  "column": "enrolledAt"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "progress": {
+                  "column": "progress"
+                },
+                "userId": {
+                  "column": "userId"
+                }
+              },
+              "namespaceId": "public",
+              "table": "enrollment"
+            }
+          },
+          "Lesson": {
+            "fields": {
+              "courseId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "description": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               },
@@ -54,42 +245,55 @@
                   "kind": "scalar"
                 }
               },
-              "updatedAt": {
+              "videoLink": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/timestamptz-string@1",
+                  "codecId": "pg/text@1",
                   "kind": "scalar"
                 }
               }
             },
             "relations": {
-              "author": {
+              "course": {
                 "cardinality": "N:1",
                 "nullable": false,
                 "on": {
                   "localFields": [
-                    "authorId"
+                    "courseId"
                   ],
                   "targetFields": [
                     "id"
                   ]
                 },
                 "to": {
-                  "model": "User",
+                  "model": "Course",
+                  "namespace": "public"
+                }
+              },
+              "problems": {
+                "cardinality": "1:1",
+                "nullable": true,
+                "on": {
+                  "localFields": [
+                    "id"
+                  ],
+                  "targetFields": [
+                    "problemId"
+                  ]
+                },
+                "to": {
+                  "model": "Problems",
                   "namespace": "public"
                 }
               }
             },
             "storage": {
               "fields": {
-                "authorId": {
-                  "column": "authorId"
+                "courseId": {
+                  "column": "courseId"
                 },
-                "content": {
-                  "column": "content"
-                },
-                "createdAt": {
-                  "column": "createdAt"
+                "description": {
+                  "column": "description"
                 },
                 "id": {
                   "column": "id"
@@ -97,12 +301,82 @@
                 "title": {
                   "column": "title"
                 },
-                "updatedAt": {
-                  "column": "updatedAt"
+                "videoLink": {
+                  "column": "videoLink"
                 }
               },
               "namespaceId": "public",
-              "table": "post"
+              "table": "lesson"
+            }
+          },
+          "Problems": {
+            "fields": {
+              "answers": {
+                "many": true,
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "id": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "problemId": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
+              "questions": {
+                "many": true,
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              }
+            },
+            "relations": {
+              "lesson": {
+                "cardinality": "N:1",
+                "nullable": false,
+                "on": {
+                  "localFields": [
+                    "problemId"
+                  ],
+                  "targetFields": [
+                    "id"
+                  ]
+                },
+                "to": {
+                  "model": "Lesson",
+                  "namespace": "public"
+                }
+              }
+            },
+            "storage": {
+              "fields": {
+                "answers": {
+                  "column": "answers"
+                },
+                "id": {
+                  "column": "id"
+                },
+                "problemId": {
+                  "column": "problemId"
+                },
+                "questions": {
+                  "column": "questions"
+                }
+              },
+              "namespaceId": "public",
+              "table": "problems"
             }
           },
           "User": {
@@ -110,7 +384,7 @@
               "createdAt": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/timestamptz-string@1",
+                  "codecId": "pg/timestamptz-temporal@1",
                   "kind": "scalar"
                 }
               },
@@ -135,10 +409,24 @@
                   "kind": "scalar"
                 }
               },
+              "password": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/text@1",
+                  "kind": "scalar"
+                }
+              },
+              "streak": {
+                "nullable": false,
+                "type": {
+                  "codecId": "pg/int4@1",
+                  "kind": "scalar"
+                }
+              },
               "updatedAt": {
                 "nullable": false,
                 "type": {
-                  "codecId": "pg/timestamptz-string@1",
+                  "codecId": "pg/timestamptz-temporal@1",
                   "kind": "scalar"
                 }
               },
@@ -151,18 +439,18 @@
               }
             },
             "relations": {
-              "posts": {
+              "enrollment": {
                 "cardinality": "1:N",
                 "on": {
                   "localFields": [
                     "id"
                   ],
                   "targetFields": [
-                    "authorId"
+                    "userId"
                   ]
                 },
                 "to": {
-                  "model": "Post",
+                  "model": "Enrollment",
                   "namespace": "public"
                 }
               }
@@ -180,6 +468,12 @@
                 },
                 "name": {
                   "column": "name"
+                },
+                "password": {
+                  "column": "password"
+                },
+                "streak": {
+                  "column": "streak"
                 },
                 "updatedAt": {
                   "column": "updatedAt"
@@ -201,19 +495,59 @@
       "public": {
         "entries": {
           "table": {
-            "post": {
+            "course": {
               "columns": {
-                "authorId": {
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nativeType": "int4",
+                  "nullable": false
+                },
+                "longDescription": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "shortDescription": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "title": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [],
+              "indexes": [],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": []
+            },
+            "enrollment": {
+              "columns": {
+                "completed": {
+                  "codecId": "pg/bool@1",
+                  "default": {
+                    "kind": "literal",
+                    "value": false
+                  },
+                  "nativeType": "bool",
+                  "nullable": false
+                },
+                "courseId": {
                   "codecId": "pg/int4@1",
                   "nativeType": "int4",
                   "nullable": false
                 },
-                "content": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
-                  "nullable": true
-                },
-                "createdAt": {
+                "enrolledAt": {
                   "codecId": "pg/timestamptz-string@1",
                   "default": {
                     "expression": "now()",
@@ -231,14 +565,18 @@
                   "nativeType": "int4",
                   "nullable": false
                 },
-                "title": {
-                  "codecId": "pg/text@1",
-                  "nativeType": "text",
+                "progress": {
+                  "codecId": "pg/int4@1",
+                  "default": {
+                    "kind": "literal",
+                    "value": 0
+                  },
+                  "nativeType": "int4",
                   "nullable": false
                 },
-                "updatedAt": {
-                  "codecId": "pg/timestamptz-string@1",
-                  "nativeType": "timestamptz",
+                "userId": {
+                  "codecId": "pg/int4@1",
+                  "nativeType": "int4",
                   "nullable": false
                 }
               },
@@ -246,10 +584,10 @@
                 {
                   "source": {
                     "columns": [
-                      "authorId"
+                      "userId"
                     ],
                     "namespaceId": "public",
-                    "tableName": "post"
+                    "tableName": "enrollment"
                   },
                   "target": {
                     "columns": [
@@ -258,15 +596,113 @@
                     "namespaceId": "public",
                     "tableName": "user"
                   }
+                },
+                {
+                  "source": {
+                    "columns": [
+                      "courseId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "enrollment"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "course"
+                  }
                 }
               ],
               "indexes": [
                 {
                   "columns": [
-                    "authorId"
+                    "courseId"
                   ],
-                  "name": "post_authorId_idx_e47547ed",
-                  "prefix": "post_authorId_idx",
+                  "name": "enrollment_courseId_idx_12f72d2a",
+                  "prefix": "enrollment_courseId_idx",
+                  "unique": false
+                },
+                {
+                  "columns": [
+                    "userId"
+                  ],
+                  "name": "enrollment_userId_idx_a489d58a",
+                  "prefix": "enrollment_userId_idx",
+                  "unique": false
+                }
+              ],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "userId",
+                    "courseId"
+                  ]
+                }
+              ]
+            },
+            "lesson": {
+              "columns": {
+                "courseId": {
+                  "codecId": "pg/int4@1",
+                  "nativeType": "int4",
+                  "nullable": false
+                },
+                "description": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nativeType": "int4",
+                  "nullable": false
+                },
+                "title": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "videoLink": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "source": {
+                    "columns": [
+                      "courseId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "lesson"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "course"
+                  }
+                }
+              ],
+              "indexes": [
+                {
+                  "columns": [
+                    "courseId"
+                  ],
+                  "name": "lesson_courseId_idx_12f72d2a",
+                  "prefix": "lesson_courseId_idx",
                   "unique": false
                 }
               ],
@@ -277,10 +713,83 @@
               },
               "uniques": []
             },
+            "problems": {
+              "checks": [
+                {
+                  "expression": "array_position(\"answers\", NULL) IS NULL",
+                  "name": "problems_answers_elem_not_null_cb1c9f1a",
+                  "prefix": "problems_answers_elem_not_null"
+                },
+                {
+                  "expression": "array_position(\"questions\", NULL) IS NULL",
+                  "name": "problems_questions_elem_not_null_5358838e",
+                  "prefix": "problems_questions_elem_not_null"
+                }
+              ],
+              "columns": {
+                "answers": {
+                  "codecId": "pg/text@1",
+                  "many": true,
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "id": {
+                  "codecId": "pg/int4@1",
+                  "default": {
+                    "expression": "autoincrement()",
+                    "kind": "function"
+                  },
+                  "nativeType": "int4",
+                  "nullable": false
+                },
+                "problemId": {
+                  "codecId": "pg/int4@1",
+                  "nativeType": "int4",
+                  "nullable": false
+                },
+                "questions": {
+                  "codecId": "pg/text@1",
+                  "many": true,
+                  "nativeType": "text",
+                  "nullable": false
+                }
+              },
+              "foreignKeys": [
+                {
+                  "source": {
+                    "columns": [
+                      "problemId"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "problems"
+                  },
+                  "target": {
+                    "columns": [
+                      "id"
+                    ],
+                    "namespaceId": "public",
+                    "tableName": "lesson"
+                  }
+                }
+              ],
+              "indexes": [],
+              "primaryKey": {
+                "columns": [
+                  "id"
+                ]
+              },
+              "uniques": [
+                {
+                  "columns": [
+                    "problemId"
+                  ]
+                }
+              ]
+            },
             "user": {
               "columns": {
                 "createdAt": {
-                  "codecId": "pg/timestamptz-string@1",
+                  "codecId": "pg/timestamptz-temporal@1",
                   "default": {
                     "expression": "now()",
                     "kind": "function"
@@ -307,8 +816,22 @@
                   "nativeType": "text",
                   "nullable": true
                 },
+                "password": {
+                  "codecId": "pg/text@1",
+                  "nativeType": "text",
+                  "nullable": false
+                },
+                "streak": {
+                  "codecId": "pg/int4@1",
+                  "default": {
+                    "kind": "literal",
+                    "value": 0
+                  },
+                  "nativeType": "int4",
+                  "nullable": false
+                },
                 "updatedAt": {
-                  "codecId": "pg/timestamptz-string@1",
+                  "codecId": "pg/timestamptz-temporal@1",
                   "nativeType": "timestamptz",
                   "nullable": false
                 },
@@ -339,34 +862,19 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "1e8412e162dbbe69f4bb3bf8d07f0280ae67eaab15c34dcf201e67468315428d"
+    "storageHash": "53af4bb5a389c32016878f5788f8651a2b21df9af241928877e42ac5b61c9df8"
   },
   "execution": {
-    "executionHash": "4abff323cc88151ef9c9a0ec90122cfee6d46814a118cdb66a9fdd94a4123463",
+    "executionHash": "eab594c7ae5d605f3ec23efb87abfb84738b65ef9804d7f3134ad6d40ab02ce0",
     "mutations": {
       "defaults": [
         {
           "onCreate": {
-            "id": "timestampNow",
+            "id": "instantNow",
             "kind": "generator"
           },
           "onUpdate": {
-            "id": "timestampNow",
-            "kind": "generator"
-          },
-          "ref": {
-            "column": "updatedAt",
-            "namespace": "public",
-            "table": "post"
-          }
-        },
-        {
-          "onCreate": {
-            "id": "timestampNow",
-            "kind": "generator"
-          },
-          "onUpdate": {
-            "id": "timestampNow",
+            "id": "instantNow",
             "kind": "generator"
           },
           "ref": {
