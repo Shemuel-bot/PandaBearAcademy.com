@@ -45,10 +45,10 @@ export const logIn = asyncHandler(async (req, res) => {
         return res.status(401).json({ message: false})
     }
 
-    const user = await db.orm.public.User.where("email")
-    .select({ email })
-    .include("enrollment")
-    .first();
+    const user = await db.orm.public.User
+        .where({ email })
+        .include("enrollment")
+        .first();
 
     if (!user || !(await bcrypt.compare(password, user.password))){
         return res.status(401).json({message: false});
@@ -76,4 +76,3 @@ export const logIn = asyncHandler(async (req, res) => {
     })
 
 })
-

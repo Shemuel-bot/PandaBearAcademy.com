@@ -9,6 +9,23 @@ import { indexRouter } from "./index.js"
 const app = express()
 app.use(express.json())
 
+const clientOrigin = process.env.CLIENT_URL
+    ? new URL(process.env.CLIENT_URL).origin
+    : undefined
+
+app.use((req, res, next) => {
+    const origin = req.get("origin")
+    if (origin && origin === clientOrigin) {
+        res.setHeader("Access-Control-Allow-Origin", origin)
+        res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+        res.setHeader("Vary", "Origin")
+    }
+
+    if (req.method === "OPTIONS") return res.sendStatus(204)
+    next()
+})
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -24,4 +41,3 @@ app.use('/', indexRouter)
 
 
 app.listen(3000, () => console.log("Server running on port 3000"));
-

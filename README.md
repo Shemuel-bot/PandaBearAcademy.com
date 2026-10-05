@@ -77,8 +77,11 @@ CLIENT_URL="http://localhost:5173"
 In Google Cloud Console, add the exact value of `GOOGLE_CALLBACK_URL` to the OAuth
 client's **Authorized redirect URIs**. For deployment, set it to the backend's public
 HTTPS URL followed by `/auth/google/callback`, and use that same URL in Google Cloud
-Console. Set the frontend's `VITE_AUTH_API_URL` to the backend's public origin; the
-development fallback is configured in `Frontend/src/auth.js`.
+Console. Set the frontend's `VITE_AUTH_API_URL` to the backend's public origin and
+`CLIENT_URL` to the frontend's public origin; the development API fallback is
+configured in `Frontend/src/auth.js`. In GitHub Codespaces, make the forwarded
+backend port (3000) public so the browser can reach the API; restart the frontend
+after changing its Vite environment variables.
 
 ### 3) Start the apps
 
