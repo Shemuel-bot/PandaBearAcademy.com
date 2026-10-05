@@ -13,31 +13,34 @@ passport.use(
         try{
                 const email = profile.emails?.[0]?.value;
 
-                const user = db.orm.public.User.where({ "googleId": profile.id}).first()
+                let user = await db.orm.public.User.where({ "googleId": profile.id}).first()
 
                 if(!user && email){
                     user = await db.orm.public.User.where({ "email": email }).first()
                     
                     if(user){
-                        user = await db.orm.public.User
+                        await db.orm.public.User
                             .where({ "email": email })
-                            .update({ "googleId": profile.googleId})
-                        done(null, user)
+                            .update({ "googleId": profile.id})
                     }
                 }
 
                 if(!user){
+                    if(!email){
+                        throw new Error("Google profile did not provide an email address")
+                    }
+
                     user = await db.orm.public.User.create({
-                        "email": profile.email,
-                        "googleId": profile.googleId,
-                        "name": profile.name,
+                        "email": email,
+                        "googleId": profile.id,
+                        "name": profile.displayName,
                         "username": profile.displayName,
                     })
                 }
 
-                done(null, user)
+                return done(null, user)
             }catch(err){
-                done(err)
+                return done(err)
             }
         }    
     )
@@ -47,7 +50,7 @@ passport.serializeUser((user, done) => done(null, user.id))
 
 passport.deserializeUser(async (id, done) => {
     try{
-        user = await db.orm.public.User.where({ "id": id}).first()
+        const user = await db.orm.public.User.where({ "id": id}).first()
         done(null, user)
     } catch (err){
         done(err)

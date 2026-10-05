@@ -1,7 +1,7 @@
-import React from 'react';
 import styles from '../css/signUp.module.css';
 import googleLogo from '../assets/google.png';
 import facebookLogo from '../assets/facebook.png';
+import { googleAuthUrl } from '../auth.js';
 
 export default function SignUp() {
   return (
@@ -17,10 +17,10 @@ export default function SignUp() {
 
         <div className={styles.formPanel}>
           <form className={styles.form}>
-            <button type="button" className={styles.socialBtn}>
+            <a href={googleAuthUrl} className={styles.socialBtn}>
               <img src={googleLogo} alt="Google" />
               Sign up with Google
-            </button>
+            </a>
             <button type="button" className={styles.socialBtn}>
               <img src={facebookLogo} alt="Facebook" />
               Sign up with Facebook

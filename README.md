@@ -61,11 +61,16 @@ npm install
 
 ### 2) Set up environment variables
 
-Create a `Backend/.env` file and add a database connection string:
+Create a `Backend/.env` file using `Backend/.env.example` as a template. Set the database
+connection string and credentials for JWT signing, sessions, and Google OAuth:
 
 ```env
 DATABASE_URL="postgresql://user:password@localhost:5432/pandabearacademy"
 JWT_SECRET="replace-this-with-a-long-random-secret"
+SESSION_SECRET="replace-this-with-a-long-random-secret"
+GOOGLE_CLIENT_ID="your-google-oauth-client-id"
+GOOGLE_CLIENT_SECRET="your-google-oauth-client-secret"
+CLIENT_URL="http://localhost:5173"
 ```
 
 ### 3) Start the apps
@@ -96,12 +101,12 @@ The backend currently exposes user-related routes from `Backend/index.js`, inclu
 
 - `GET /users/v1`
 - `POST /users/v1`
+- `POST /users/v1/login`
+- Google OAuth at `/auth/google`
 
-The auth flow is still being developed, and login logic is expected to live under a dedicated route such as:
-
-```text
-POST /users/v1/login
-```
+Email login returns a JWT in JSON. Google sign-in sets a one-day JWT in an HttpOnly
+`token` cookie before redirecting to the frontend `/home` page. The Google OAuth client
+must allow `http://localhost:3000/auth/google/callback` as its local callback URL.
 
 The Prisma schema defines the main app entities, including `User`, `Course`, `Enrollment`, `Lesson`, and `Problems` in:
 
@@ -154,4 +159,3 @@ This project is actively under construction. The frontend and backend are set up
 ## License
 
 ISC
-
