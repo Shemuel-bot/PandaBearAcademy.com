@@ -1,3 +1,4 @@
+import "dotenv/config"
 import express from "express"
 import session from "express-session"
 import passport from "passport"
@@ -23,5 +24,4 @@ app.use('/', indexRouter)
 
 
 app.listen(3000, () => console.log("Server running on port 3000"));
-
 

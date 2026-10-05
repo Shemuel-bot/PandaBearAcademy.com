@@ -70,8 +70,15 @@ JWT_SECRET="replace-this-with-a-long-random-secret"
 SESSION_SECRET="replace-this-with-a-long-random-secret"
 GOOGLE_CLIENT_ID="your-google-oauth-client-id"
 GOOGLE_CLIENT_SECRET="your-google-oauth-client-secret"
+GOOGLE_CALLBACK_URL="http://localhost:3000/auth/google/callback"
 CLIENT_URL="http://localhost:5173"
 ```
+
+In Google Cloud Console, add the exact value of `GOOGLE_CALLBACK_URL` to the OAuth
+client's **Authorized redirect URIs**. For deployment, set it to the backend's public
+HTTPS URL followed by `/auth/google/callback`, and use that same URL in Google Cloud
+Console. Set the frontend's `VITE_AUTH_API_URL` to the backend's public origin; the
+development fallback is configured in `Frontend/src/auth.js`.
 
 ### 3) Start the apps
 
