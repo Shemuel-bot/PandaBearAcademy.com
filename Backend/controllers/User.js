@@ -11,29 +11,26 @@ export const getAllUsers = asyncHandler(async (req, res) => {
 })
 
 export const userPost = [
-    body("email", "email must not be empty").trim().isLength({ min: 2}).escape,
+    body("email", "email must not be empty").trim().isLength({ min: 2}).escape(),
     body("username", "username needs to be filled").trim().isLength({min: 2}),
     body("name", "give me your real name.").trim().isLength({min:2}),
-    body("password", "password must be nice").trim().isLength({min:2}).escape,
+    body("password", "password must be nice").trim().isLength({min:2}),
     asyncHandler(async (req, res) => {
         const error = validationResult(req);
-        const password = await bcrypt
-            .hash(req.body.password, 10)
-            .then(hash => hash)
-            .catch(err => console.log(err));
         if(!error.isEmpty()){
-            res.json({
+            return res.status(400).json({
                 message: error.array()
-            })
-        }else{
-            await db.orm.public.User.create({
-                email: req.body.email,
-                password: password,
-                username: req.body.username,
-                name: req.body.name,
-
-            })
+            });
         }
+
+        const password = await bcrypt.hash(req.body.password, 10);
+        await db.orm.public.User.create({
+            email: req.body.email,
+            password: password,
+            username: req.body.username,
+            name: req.body.name,
+        });
+        return res.sendStatus(201);
     })
 
 ]
