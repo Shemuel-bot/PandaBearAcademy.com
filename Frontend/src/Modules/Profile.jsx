@@ -1,17 +1,50 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from '../css/profile.module.css';
-import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 import Header from '../Components/Header';
 
-export default function Profile() {
-  const navigate = useNavigate();
-  const [isEditing, setIsEditing] = useState(false);
+function getAuthenticatedUser() {
+  const storedUser = sessionStorage.getItem('authUser');
+  if (storedUser) {
+    try {
+      const user = JSON.parse(storedUser);
+      if (typeof user.email === 'string') {
+        return {
+          name: typeof user.name === 'string' ? user.name : '',
+          email: user.email,
+        };
+      }
+    } catch {
+      // Fall back to the signed-in token if cached user data is invalid.
+    }
+  }
 
-  // Placeholder user data
+  const token = sessionStorage.getItem('authToken');
+  try {
+    const payloadPart = token?.split('.')[1];
+    if (!payloadPart) return { name: '', email: '' };
+
+    const encodedPayload = payloadPart.replace(/-/g, '+').replace(/_/g, '/');
+    const paddedPayload = encodedPayload.padEnd(Math.ceil(encodedPayload.length / 4) * 4, '=');
+    const binaryPayload = atob(paddedPayload);
+    const payloadBytes = Uint8Array.from(binaryPayload, (character) => character.charCodeAt(0));
+    const payload = JSON.parse(new TextDecoder().decode(payloadBytes));
+    return {
+      name: typeof payload.name === 'string' ? payload.name : '',
+      email: typeof payload.email === 'string' ? payload.email : '',
+    };
+  } catch {
+    return { name: '', email: '' };
+  }
+}
+
+export default function Profile() {
+  const [isEditing, setIsEditing] = useState(false);
+  const authenticatedUser = getAuthenticatedUser();
+
   const [userData, setUserData] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: authenticatedUser.name,
+    email: authenticatedUser.email,
     joinDate: 'January 15, 2024',
     bio: 'Passionate learner exploring mathematics and science.',
     avatar: logo

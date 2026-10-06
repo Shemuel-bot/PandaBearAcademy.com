@@ -34,6 +34,12 @@ export default function SignIn() {
       }
 
       sessionStorage.setItem('authToken', result.token);
+      if (result.user && typeof result.user.email === 'string') {
+        sessionStorage.setItem('authUser', JSON.stringify({
+          name: typeof result.user.name === 'string' ? result.user.name : '',
+          email: result.user.email,
+        }));
+      }
       navigate('/home', { replace: true });
     } catch {
       setError('Could not connect to the server. Please try again.');
