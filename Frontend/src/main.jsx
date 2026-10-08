@@ -11,6 +11,7 @@ import UserHome from './Modules/UserHome.jsx'
 import Root from './Modules/Root.jsx'
 import Profile from './Modules/Profile.jsx'
 import Donate from './Modules/Donate.jsx'
+import RequireAuth from './Components/RequireAuth.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <UserHome />,
+    element: <RequireAuth><UserHome /></RequireAuth>,
   },
   {
     path: "sign-in",
@@ -36,19 +37,19 @@ const router = createBrowserRouter([
   },
   {
     path: "courses",
-    element: <Courses />,
+    element: <RequireAuth><Courses /></RequireAuth>,
   },
   {
     path: "courses/:courseId",
-    element: <Course />,
+    element: <RequireAuth><Course /></RequireAuth>,
   },
   {
     path: "profile",
-    element: <Profile />,
+    element: <RequireAuth><Profile /></RequireAuth>,
   },
   {
     path: "donate",
-    element: <Donate />,
+    element: <RequireAuth><Donate /></RequireAuth>,
   }
 ]);
 

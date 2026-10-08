@@ -43,9 +43,27 @@ router.get(
     }
 )
 router.get('/auth/me', async (req, res) => {
-    if (!req.isAuthenticated()) return res.status(401).json({user: null, message: false})
-    const user = req.user
-    res.json({ user: user})
+    const authorization = req.get("Authorization")
+    if (authorization) {
+        const match = authorization.match(/^Bearer\s+(\S+)$/i)
+        if (!match) return res.status(401).json({ user: null, message: false })
+
+        try {
+            const user = jwt.verify(match[1], process.env.JWT_SECRET)
+            if (typeof user !== "object" || user === null) {
+                return res.status(401).json({ user: null, message: false })
+            }
+            return res.json({ user })
+        } catch (error) {
+            if (error instanceof jwt.JsonWebTokenError) {
+                return res.status(401).json({ user: null, message: false })
+            }
+            throw error
+        }
+    }
+
+    if (!req.isAuthenticated()) return res.status(401).json({ user: null, message: false })
+    return res.json({ user: req.user })
 })
 router.post('/auth/logout', async (req, res, next) => {
     req.logOut((err) => {

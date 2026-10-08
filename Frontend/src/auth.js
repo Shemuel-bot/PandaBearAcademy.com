@@ -4,3 +4,4 @@ const authApiUrl =
 export const googleAuthUrl = new URL('/auth/google', authApiUrl).toString();
 export const signUpApiUrl = new URL('/users/v1', authApiUrl).toString();
 export const loginApiUrl = new URL('/users/v1/login', authApiUrl).toString();
+export const authMeApiUrl = new URL('/auth/me', authApiUrl).toString();
