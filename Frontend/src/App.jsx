@@ -26,11 +26,12 @@ function App() {
           Panda Bear Academy
         </Link>
         <nav className="nav-links" aria-label="Primary navigation">
-          <Link to='/sign-in'>Sign In</Link>
           <Link to="/courses">Courses</Link>
           <Link to="/">Mission</Link>
           <Link to="/">Contact</Link>
+          <Link to='/sign-in' className="nav-cta">Sign In</Link>
           <Link to="/sign-up" className="nav-cta">Join Free</Link>
+
         </nav>
       </header>
 
@@ -70,7 +71,7 @@ function App() {
 
         <section className="cta-strip">
           <h2>Start learning today—no cost, no gatekeeping.</h2>
-          <Link to="/" className="btn btn-primary">Get Started</Link>
+          <Link to="/sign-up" className="btn btn-primary">Get Started</Link>
         </section>
       </main>
 
