@@ -1,6 +1,7 @@
 .levelStepContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 100%;
     margin-bottom: 1rem;
@@ -47,6 +48,33 @@
     border-radius: 20px;
     justify-content: center;
     margin-top: 0.5rem;
+    animation: grow 0.25s ease-out;
+}
+
+.levelLabelClosing {
+    animation: shrink 0.25s ease-in forwards;
+}
+
+@keyframes grow {
+    from {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shrink {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.75);
+    }
 }
 
 .levelButton {
