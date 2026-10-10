@@ -8,24 +8,35 @@ export default function UserHome() {
   return (
     <div className={styles.page}>
         <header className={styles.header}>
-            <div className={styles.brandBlock} onClick={() => navigate('/')}>
-                <img src={logo} alt="Panda Bear Academy Logo" className={styles.brandLogo} />
-                <div className={styles.brandText}>
-                    <p className={styles.eyebrow}>Learning dashboard</p>
-                    <h1 >Panda Bear Academy</h1>
+            <div className={styles.brandBlock}>
+                <div className={styles.brandStuff} onClick={() => navigate('/')}>
+                    <img src={logo} alt="Panda Bear Academy Logo" className={styles.brandLogo} />
+                    <div className={styles.brandText}>
+                        <p className={styles.eyebrow}>Learning dashboard</p>
+                        <h1>Panda Bear Academy</h1>
+                    </div>
+                </div>
+                <div className={styles.headerlinks}>
+                    <Link to="/home" className={styles.home}>
+                        <img src="https://img.icons8.com/?size=100&id=z6m63h25vYs2&format=png&color=000000" alt="Home" className={styles.headerIcon} />
+                        Home
+                    </Link>
+                    <Link to="/courses" className={styles.headerlink}>
+                        <img src="https://img.icons8.com/?size=100&id=3649&format=png&color=000000" alt="Courses" className={styles.headerIcon} />
+                        Courses
+                    </Link>
                 </div>
             </div>
-            <div className={styles.headerlinks}>
-                <Link to="/home" className={styles.home} >
-                    <img src="https://img.icons8.com/?size=100&id=z6m63h25vYs2&format=png&color=000000" alt="Home" className={styles.headerIcon} />
-                    Home
+            <div className={styles.headerActions}>
+                <Link to="/profile" className={styles.profileLink}>
+                    <img src="https://img.icons8.com/?size=100&id=JOzPdFXJKESy&format=png&color=000000" alt="Profile" className={styles.headerIcon} />
+                    Profile
                 </Link>
-                <Link to="/courses" className={styles.headerlink}>
-                    <img src="https://img.icons8.com/?size=100&id=3649&format=png&color=000000" alt="Courses" className={styles.headerIcon} />
-                    Courses
+                <Link to="/donate" className={styles.donateLink}>
+                    <img src="https://img.icons8.com/?size=100&id=5469&format=png&color=000000" alt="Donate" className={styles.headerIcon} />
+                    Donate
                 </Link>
             </div>
-            
         </header>
         <main className={styles.content}>
             <section className={styles.section}>
